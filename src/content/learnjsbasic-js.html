@@ -46,7 +46,10 @@
             alert('Я вас не знаю');
         }
     }
-
+     ifNumbers =()=> {
+        let result;
+		return result = a + b <4 ? "malo" : 'mnogo'
+	};
     function ternaryTransform(login) {
         let message = (login == "Вася") ? "Привет" :
             (login == "Директор") ? "Здравствуйте" :
@@ -96,7 +99,7 @@
         let num;
         do {
             num = +prompt('Введите число больше 100', '');
-        } while (isNaN(num) && num <= 100)
+        } while (!isNaN(num) &&num <= 100)
     }
 
     function simpleNum() {
