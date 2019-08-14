@@ -7,8 +7,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" href="css/style.min.css">
   </head>
+  <style>
+    body,html {
+      margin: 0;
+      padding: 0;
+    }
+    p{
+      margin: 5px 0 10px;
+    }
+  </style>
   <body>
     <div class="content">
       <header>
@@ -53,7 +61,7 @@
           P.S. В JavaScript нет встроенного метода для этого. Создайте функцию, используя toUpperCase() и charAt().
         </p>
         <p>
-          <button onclick="alert(ucFirst(&quot;вася&quot;))">запуск</button>
+          <button onclick="alert(ucFirst('вася'))">запуск</button>
         </p>
         <p>
           Напишите функцию checkSpam(str), которая возвращает true, если строка str содержит „viagra“ или „XXX“, а иначе false.Функция должна быть нечувствительна к регистру:
@@ -63,7 +71,7 @@
           checkSpam("innocent rabbit") == false
         </p>
         <p>
-          <button onclick="alert( checkSpam(&quot;XXX&quot;) )">запуск</button>
+          <button onclick="alert( checkSpam('XXX') )">запуск</button>
         </p>
         <p>
           Создайте функцию truncate(str, maxlength), которая проверяет длину строки str, и если она превосходит maxlength – заменяет конец str на "...", так чтобы ее длина стала равна maxlength.Результатом функции должна быть (при необходимости) усечённая строка.
@@ -78,7 +86,7 @@
             P.S. В кодировке Unicode существует специальный символ «троеточие»: … (HTML: &hellip;), но в этой задаче подразумеваются именно три точки подряд.
         </p>
         <p>
-          <button onclick="alert( truncate(&quot;Вот, что мне хотелось бы сказать на эту тему&quot;, 20) )">запуск</button>
+          <button onclick="alert( truncate('Вот, что мне хотелось бы сказать на эту тему', 20) )">запуск</button>
         </p>
         <p>
           Есть стоимость в виде строки: "$120". То есть, первым идёт знак валюты, а затем – число.Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять число-значение, в данном случае 120.
@@ -96,7 +104,7 @@
         <p>
           <button onclick="objectCreate()">запуск</button>
         </p>
-        <p:b>Объекты: перебор свойств</p:b>
+        <p><b>Объекты: перебор свойств</b></p>
         <p>
           Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно свойство есть.Работать должно так:
           
@@ -447,61 +455,6 @@
         <p>
           <button onclick="getMnoj(nmbs)">запуск</button>
         </p>
-        <p><b>Задачи от Ильи</b></p>
-        <p>
-          проверка числа - дает ли сумма любых двух числел в массиве это число.  p: button(onclick='alert (checkNumber(b,a) )') запуск</p>
-        <p>проверка входящего параметра - является ли это частью объекта/ массива.
-          <p>
-            <button onclick="alert (checkParam(c,d) )">запуск</button>
-          </p>
-        </p>
-        <p>GET fetch запрос пользователя на данные</p>
-        <p>
-          <button onclick="getUser()">запуск</button>
-        </p>
-        <p>POST fetch запрос на занесение данных</p>
-        <p>
-          <button onclick="getUser2()">запуск запуск</button>
-        </p>
-        <p>GET axios запрос пользователя на данные</p>
-        <p>
-          <button onclick="getAxios()">запуск</button>
-        </p>
-        <p>POST axios запрос пользователя на данные</p>
-        <p>
-          <button onclick="postAxios()">запуск</button>
-        </p>
-        <p>GET async fetch запрос пользователя на данные</p>
-        <p>
-          <button onclick="fetchAcyncResult()">запуск</button>
-        </p>
-        <p>GET fetch запрос погоды
-          <p>
-            <button onclick="getWeather()">запуск</button>
-          </p>
-        </p>
-        <p><b>Псевдомассив аргументов "arguments"</b></p>
-        <p>
-          function f(x) {    // ..ваш код..
-              // выведите 1, если первый аргумент есть, и 0 - если нет
-          }
-          
-          f(undefined); // 1
-          f(); // 0
-        </p>
-        <p>
-          <button onclick="alert( argmnts(undefined) )">запуск</button>
-        </p>
-        <p>
-          Напишите функцию sum(...), которая возвращает сумму всех своих аргументов:sum() = 0
-          sum(1) = 1
-          sum(1, 2) = 3
-          sum(1, 2, 3) = 6
-          sum(1, 2, 3, 4) = 10
-        </p>
-        <p>
-          <button onclick="alert( argumentsSum(1,5,6,7) )">запуск</button>
-        </p>
         <p><b>Дата и время</b></p>
         <p>
           Создайте объект Date для даты: 20 февраля 2012 года, 3 часа 12 минут.Временная зона – местная. Выведите его на экран</p>
@@ -577,6 +530,7 @@
         </p>
         <!--p: button(onclick='alert(  )') запуск-->
       </div>
+      <link rel="import" href="../content/learnjsstructure-js.html">
     </div>
   </body>
 </html>
