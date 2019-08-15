@@ -148,6 +148,9 @@
         return ( a > b ) ? b: a;
 
     }
+    ask = (question,yes,no) => {
+      ((confirm(question)) ? yes : no)()
+    }
 
 </script>
 <script>
