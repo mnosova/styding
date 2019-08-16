@@ -61,15 +61,45 @@
       sums.push(num);
     } while (+num >= 0) ;
       let result = 0;
-      for (let i = 0; i < sums.length; i++) {
-        return result += sums[i];
+      for (let i = 0; i < sums.length-1; i++) {
+          result += +sums[i];
     }
+      return result;
   };
 
   extractCurrencyValue = (string) => {
     return +string.slice(1);
 
   };
+
+
+  function sumInput() {
+
+    let numbers = [];
+
+    while (true) {
+
+      let value = prompt("Введите число", 0);
+
+      if (value === "" || value === null || !isFinite(value)) break;
+
+      numbers.push(+value);
+    }
+
+    let sum = 0;
+    for (let number of numbers) {
+      sum += number;
+    }
+    return sum;
+  }
+  // getMaxSubSum=(numbers)=>{
+  //   let sum =0;
+  //   for(num of numbers){
+  //     sum+=+num;
+  //   }
+  //
+  // };
+
 
 
   //objects as massive
