@@ -99,7 +99,40 @@
   //   }
   //
   // };
+  let customClasses = [
+      'open',
+      'close'
+  ];
+  addClass = (classes, cls) => {
+     if(classes.filter( value => value !== cls)) {
+          classes.push(cls);
+      }
+     console.log('строчка');
+     //return classes;
+  };
 
+  let customObject = {
+      className : 'this'
+  };
+
+
+
+  removeClass = (object, cls) => {
+      let string = object.className;
+   for (let str of string) {
+       let word = string.find(str=>str!==cls);
+       if(word){
+           console.log(word);
+           console.log('удалить');
+       }
+   }
+  //return object;
+  };
+
+  // camelize=(str) =>{
+  //
+  //
+  // };
 
 
   //objects as massive
