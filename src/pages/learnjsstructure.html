@@ -340,7 +340,7 @@
 			P.S. Ваша функция не должна добавлять лишних пробелов.
 		</p>
 		<button onclick="console.log(addClass(customClasses, 'open'))">запуск</button>
-		<button onclick="console.log(addClass(customClasses, 'add'))">запуск</button>
+
 		<p>
 			Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
 			То есть, дефисы удаляются, а все слова после них получают заглавную букву.
@@ -351,7 +351,7 @@
 			Такая функция полезна при работе с CSS.
 			P.S. Вам пригодятся методы строк charAt, split и toUpperCase.
 		</p>
-		<!--p: button(onclick='') запуск-->
+		<button onclick="console.log(camelize('background-color'))">запуск</button>
 		<p>
 			У объекта есть свойство className, которое хранит список «классов» – слов, разделенных пробелами:
 			var obj = {
@@ -368,7 +368,7 @@
 			alert( obj.className ); // 'my'
 			Лишних пробелов после функции образовываться не должно.
 		</p>
-		<!--p: button(onclick='') запуск-->
+		<button onclick="console.log(removeClass(customObject, 'add'))">запуск</button>
 		<p>
 			Создайте функцию filterRangeInPlace(arr, a, b), которая получает массив с числами arr и удаляет из него все числа вне диапазона a..b. То есть, проверка имеет вид a ≤ arr[i] ≤ b. Функция должна менять сам массив и ничего не возвращать. |апример:
 			arr = [5, 3, 8, 1];

@@ -99,40 +99,39 @@
   //   }
   //
   // };
-  let customClasses = [
-      'open',
-      'close'
-  ];
+
+  let customClasses = {
+      className : 'open close'
+  };
   addClass = (classes, cls) => {
-     if(classes.filter( value => value !== cls)) {
-          classes.push(cls);
+      if(!classes.className.includes(cls)){
+          let stringArr = classes.className.split(' ');
+          stringArr.push(cls);
+          classes.className=stringArr.join(' ');
       }
-     console.log('строчка');
-     //return classes;
+      return classes;
   };
 
   let customObject = {
-      className : 'this'
+      className : 'this that add'
   };
 
 
 
-  removeClass = (object, cls) => {
-      let string = object.className;
-   for (let str of string) {
-       let word = string.find(str=>str!==cls);
-       if(word){
-           console.log(word);
-           console.log('удалить');
-       }
-   }
-  //return object;
+  removeClass = (classes, cls) => {
+      if(classes.className.includes(cls)){
+          let stringArr = classes.className.split(' ');
+          classes.className = stringArr.filter(val => val!==cls).join(' ');
+      }
+      return classes;
   };
 
-  // camelize=(str) =>{
-  //
-  //
-  // };
+  camelize = (str) => {
+      let pos = str.indexOf('-') + 1;
+      let symb = str.charAt(pos).toLocaleUpperCase();
+      // let newStr = str.replace(pos, pos, symb);
+      //console.log(newStr);
+  };
 
 
   //objects as massive
