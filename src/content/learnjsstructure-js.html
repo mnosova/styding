@@ -1,359 +1,379 @@
 <script>
-  //numbers
-  function sum() {
-    let a = +prompt("Введите первое число", "");
-    let b = +prompt("Введите второе число", "");
-    return sum = (a + b);
-  }
-
-  function mnojItem() {
-    let sum = +(0.2 + 0.1).toFixed(1);
-    let result = sum + '$';
-    return result;
-
-  }
-
-  function random(max) {
-    let result = Math.round(Math.random() * max);
-    return result;
-
-  }
-
-  function randomBetween(min, max) {
-    let result = min + Math.random() * (max - min - 1);
-    return result;
-
-  }
-
-  function randomInteger(min, max) {
-    let rand = min + Math.random() * (max + 1 - min);
-    rand = Math.floor(rand);
-    return rand;
-  }
-
-  //string
-  function ucFirst(str) {
-
-    if (!str) return str;
-    return str[0].toUpperCase() + str.slice(1);
-
-  }
-
-  function checkSpam(str) {
-    if (!str) return str;
-    lowerCase = str.toLowerCase();
-    return !!(~lowerCase.indexOf('viagra') || ~lowerCase.indexOf('xxx'))
-  }
-
-  function truncate(str, maxlength) {
-    if (str.length > maxlength) {
-      return str.slice(0, maxlength - 3) + '...';
-    }
-    return str;
-
-  }
-
-  askGetSum = () => {
-    let sums = [];
-    let num =0;
-    do {
-      num = prompt('Введите число?', '');
-      sums.push(num);
-    } while (+num >= 0) ;
-      let result = 0;
-      for (let i = 0; i < sums.length-1; i++) {
-          result += +sums[i];
-    }
-      return result;
-  };
-
-  extractCurrencyValue = (string) => {
-    return +string.slice(1);
-
-  };
-
-  const findArr =["test", 2, 1.5, false];
-
-  find = (arr, value) => {
-     let result = arr.find(val=> {
-       return val === value;
-  });
-     return result ? arr.indexOf(result) : -1;
-  };
-
-  const filterArr = [5, 4, 3, 8, 0];
-
-  filterRange = (arr=[], a, b) => {
-      return arr.filter(elem => elem >= a && elem <=b)
-  };
-
-  function sumInput() {
-
-    let numbers = [];
-
-    while (true) {
-
-      let value = prompt("Введите число", 0);
-
-      if (value === "" || value === null || !isFinite(value)) break;
-
-      numbers.push(+value);
+    //numbers
+    function sum() {
+        let a = +prompt("Введите первое число", "");
+        let b = +prompt("Введите второе число", "");
+        return sum = (a + b);
     }
 
-    let sum = 0;
-    for (let number of numbers) {
-      sum += number;
-    }
-    return sum;
-  }
-  // getMaxSubSum=(numbers)=>{
-  //   let sum =0;
-  //   for(num of numbers){
-  //     sum+=+num;
-  //   }
-  //
-  // };
-
-  let customClasses = {
-      className : 'open close'
-  };
-  addClass = (classes, cls) => {
-      if(!classes.className.includes(cls)){
-          let stringArr = classes.className.split(' ');
-          stringArr.push(cls);
-          classes.className=stringArr.join(' ');
-      }
-      return classes;
-  };
-
-  let customObject = {
-      className : 'this that add'
-  };
-
-
-
-  removeClass = (classes, cls) => {
-      if(classes.className.includes(cls)){
-          let stringArr = classes.className.split(' ');
-          classes.className = stringArr.filter(val => val!==cls).join(' ');
-      }
-      return classes;
-  };
-const clearArr = [5, 3, 8, 1];
-
-  filterRangeInPlace=(arr, a, b)=>{
-      for(let el of arr) {
-          console.log(el);
-          if(a <= el <= b) break;
-          else{
-              arr.splice(arr.indexOf(el),1);
-          }
-      }
-      console.log(arr);
-  };
-  camelize = (str) => {
-      let pos = str.indexOf('-') + 1;
-      let symb = str.charAt(pos).toLocaleUpperCase();
-      // let newStr = str.replace(pos, pos, symb);
-      //console.log(newStr);
-  };
-
-
-  //objects as massive
-  function objectCreate() {
-    let user = {};
-    user.name = 'Вася';
-    user.surname = 'Петров';
-    console.log(user);
-    user.name = 'Сергей';
-    console.log(user);
-    delete user.name;
-    console.log(user);
-
-  }
-
-  function isEmpty(obj) {
-    for (let key in obj) {
-      return false;
-    }
-    return true;
-  }
-
-  let schedule = {};
-
-  //    alert( isEmpty(schedule) ); // true
-
-  schedule["8:30"] = "подъём";
-  //
-  //    alert( isEmpty(schedule) ); // false
-
-  function sumSalaries(salaries) {
-
-    let sum = 0;
-
-    for (let name in salaries) {
-
-      sum += salaries[name]
-    }
-    return sum;
-  }
-
-  let salaries = {
-    "Vasya": 100,
-    "Petya": 300,
-    "Dasha": 250
-  };
-
-  function whoIsRich(salaries) {
-
-    let max = 0;
-    let maxName = "";
-    for (let name in salaries) {
-      if (max < salaries[name]) {
-        max = salaries[name];
-        maxName = name;
-      }
+    function mnojItem() {
+        let sum = +(0.2 + 0.1).toFixed(1);
+        let result = sum + '$';
+        return result;
 
     }
-    return maxName;
-  }
 
-  function multiplyNumeric(menu) {
-    for (let key in menu) {
-      if (isNumeric(menu[key])) {
-        menu[key] *= 2;
-      }
+    function random(max) {
+        let result = Math.round(Math.random() * max);
+        return result;
 
-      function isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n)
-      }
     }
-    alert("menu width=" + menu.width + " height=" + menu.height + " title=" + menu.title);
-  }
 
-  let menu = {
-    width: 200,
-    height: 300,
-    title: "My menu"
-  };
+    function randomBetween(min, max) {
+        let result = min + Math.random() * (max - min - 1);
+        return result;
 
-  let goods = ['apple', 'orange', 'banana'];
+    }
 
-  function getLastFruit() {
-    alert(goods);
-    alert(goods[goods.length - 1]);
-  }
+    function randomInteger(min, max) {
+        let rand = min + Math.random() * (max + 1 - min);
+        rand = Math.floor(rand);
+        return rand;
+    }
 
-  function pushToArray() {
-    goods[goods.length] = 'melon';
-    alert(goods);
-  }
+    //string
+    function ucFirst(str) {
 
-  let styles = ['Джаз', 'Блюз'];
+        if (!str) return str;
+        return str[0].toUpperCase() + str.slice(1);
 
-  function unshiftArray() {
-    alert(styles);
-    styles[styles.length] = 'Рок-н-Ролл';
-    alert(styles);
-    styles[styles.length - 2] = 'Классика';
-    alert(styles);
-    alert(styles.shift());
-    alert(styles);
-    styles.unshift('Рэп', 'Регги');
-    alert(styles);
+    }
 
-  }
+    function checkSpam(str) {
+        if (!str) return str;
+        lowerCase = str.toLowerCase();
+        return !!(~lowerCase.indexOf('viagra') || ~lowerCase.indexOf('xxx'))
+    }
 
-  let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+    function truncate(str, maxlength) {
+        if (str.length > maxlength) {
+            return str.slice(0, maxlength - 3) + '...';
+        }
+        return str;
 
-  function alertRandom() {
-    let min = 0;
-    let max = arr.length - 1;
-    let rand = min + Math.floor(Math.random() * (max + 1 - min));
-    //let rand = Math.floor(Math.random() * arr.length);
-    alert(arr[rand])
+    }
 
-  }
+    askGetSum = () => {
+        let sums = [];
+        let num = 0;
+        do {
+            num = prompt('Введите число?', '');
+            sums.push(num);
+        } while (+num >= 0) ;
+        let result = 0;
+        for (let i = 0; i < sums.length - 1; i++) {
+            result += +sums[i];
+        }
+        return result;
+    };
 
-  function createElements() {
-    let arr = [];
-    let element = prompt('Элемент', '');
-    if (element) {
+    extractCurrencyValue = (string) => {
+        return +string.slice(1);
 
-      arr.push(element);
-      element = prompt('Элемент', '')
-    } else return arr;
+    };
+
+    const findArr = ["test", 2, 1.5, false];
+
+    find = (arr, value) => {
+        let result = arr.find(val => {
+            return val === value;
+        });
+        return result ? arr.indexOf(result) : -1;
+    };
+
+    const filterArr = [5, 4, 3, 8, 0];
+
+    filterRange = (arr = [], a, b) => {
+        return arr.filter(elem => elem >= a && elem <= b)
+    };
+
+    function sumInput() {
+
+        let numbers = [];
+
+        while (true) {
+
+            let value = prompt("Введите число", 0);
+
+            if (value === "" || value === null || !isFinite(value)) break;
+
+            numbers.push(+value);
+        }
+
+        let sum = 0;
+        for (let number of numbers) {
+            sum += number;
+        }
+        return sum;
+    }
+
+    // getMaxSubSum=(numbers)=>{
+    //   let sum =0;
+    //   for(num of numbers){
+    //     sum+=+num;
+    //   }
+    //
+    // };
+
+    let customClasses = {
+        className: 'open close'
+    };
+    addClass = (classes, cls) => {
+        if (!classes.className.includes(cls)) {
+            let stringArr = classes.className.split(' ');
+            stringArr.push(cls);
+            classes.className = stringArr.join(' ');
+        }
+        return classes;
+    };
+
+    let customObject = {
+        className: 'this that add'
+    };
+
+
+    removeClass = (classes, cls) => {
+        if (classes.className.includes(cls)) {
+            let stringArr = classes.className.split(' ');
+            classes.className = stringArr.filter(val => val !== cls).join(' ');
+        }
+        return classes;
+    };
+    const clearArr = [5, 3, 8, 1];
+
+    filterRangeInPlace = (arr, a, b) => {
+        for (let el of arr) {
+            if (a <= el && el <= b) break;
+            else {
+                arr.splice(arr.indexOf(el), 1);
+            }
+        }
+        console.log(arr);
+    };
+
+    const sortReverseArr = [5, 2, 1, -10, 8];
+
+    sortReverse = (arr = []) => {
+        return arr.sort().reverse();
+
+    };
+
+    const array = ["HTML", "JavaScript", "CSS"];
+
+    arrSorted = (arr) => {
+        const arrSorted = arr.slice().reverse();
+        console.log(arr);
+        console.log(arrSorted);
+        return arrSorted;
+    };
+
+    randomShake=()=>{
+
+
+    }
+    camelize = (str) => {
+        let pos = str.indexOf('-') + 1;
+        let symb = str.charAt(pos).toLocaleUpperCase();
+        // let newStr = str.replace(pos, pos, symb);
+        //console.log(newStr);
+    };
+
+
+    //objects as massive
+    function objectCreate() {
+        let user = {};
+        user.name = 'Вася';
+        user.surname = 'Петров';
+        console.log(user);
+        user.name = 'Сергей';
+        console.log(user);
+        delete user.name;
+        console.log(user);
+
+    }
+
+    function isEmpty(obj) {
+        for (let key in obj) {
+            return false;
+        }
+        return true;
+    }
+
+    let schedule = {};
+
+    //    alert( isEmpty(schedule) ); // true
+
+    schedule["8:30"] = "подъём";
+    //
+    //    alert( isEmpty(schedule) ); // false
+
+    function sumSalaries(salaries) {
+
+        let sum = 0;
+
+        for (let name in salaries) {
+
+            sum += salaries[name]
+        }
+        return sum;
+    }
+
+    let salaries = {
+        "Vasya": 100,
+        "Petya": 300,
+        "Dasha": 250
+    };
+
+    function whoIsRich(salaries) {
+
+        let max = 0;
+        let maxName = "";
+        for (let name in salaries) {
+            if (max < salaries[name]) {
+                max = salaries[name];
+                maxName = name;
+            }
+
+        }
+        return maxName;
+    }
+
+    function multiplyNumeric(menu) {
+        for (let key in menu) {
+            if (isNumeric(menu[key])) {
+                menu[key] *= 2;
+            }
+
+            function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n)
+            }
+        }
+        alert("menu width=" + menu.width + " height=" + menu.height + " title=" + menu.title);
+    }
+
+    let menu = {
+        width: 200,
+        height: 300,
+        title: "My menu"
+    };
+
+    let goods = ['apple', 'orange', 'banana'];
+
+    function getLastFruit() {
+        alert(goods);
+        alert(goods[goods.length - 1]);
+    }
+
+    function pushToArray() {
+        goods[goods.length] = 'melon';
+        alert(goods);
+    }
+
+    let styles = ['Джаз', 'Блюз'];
+
+    function unshiftArray() {
+        alert(styles);
+        styles[styles.length] = 'Рок-н-Ролл';
+        alert(styles);
+        styles[styles.length - 2] = 'Классика';
+        alert(styles);
+        alert(styles.shift());
+        alert(styles);
+        styles.unshift('Рэп', 'Регги');
+        alert(styles);
+
+    }
+
+    let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+
+    function alertRandom() {
+        let min = 0;
+        let max = arr.length - 1;
+        let rand = min + Math.floor(Math.random() * (max + 1 - min));
+        //let rand = Math.floor(Math.random() * arr.length);
+        alert(arr[rand])
+
+    }
+
+    function createElements() {
+        let arr = [];
+        let element = prompt('Элемент', '');
+        if (element) {
+
+            arr.push(element);
+            element = prompt('Элемент', '')
+        } else return arr;
 //     arr.push( prompt('Элемент', ''));
 //	arr.push( prompt('Элемент', ''));
 //    arr.push( prompt('Элемент', ''));
-    console.log(arr);
+        console.log(arr);
 
 
-  }
-
-  let classes = {
-    className: 'open menu'
-  }
-
-  function filterClassName() {
-
-
-  }
-
-  let words = ["Есть", "жизнь", "на", "Марсе"];
-
-  function forToMap() {
-    let lengthAr = words.map(function (word) {
-      return word.length
-    });
-    alert(lengthAr)
-  }
-
-  let nmbs = [1, 2, 3, 4, 5];
-
-  function getSums(arr) {
-    let result = [];
-    if (!arr.length) return result;
-
-    let totalSum = arr.reduce(function (prev, curr) {
-      result.push(prev);// заносит prev - результат суммы
-      console.log(prev + ' prev');
-      console.log(curr + ' curr');
-      return prev + curr // это значение возвращает prev
-
-    });
-    result.push(totalSum);
-  }
-
-  function getMnoj(arr) {
-    let result = [];
-    if (!arr.length) return result;
-    let totalSum = arr.map(function (item, i) {
-      if (arr[i - 1] > 0) {
-        return item * arr[i - 1]
-
-      }
-
-
-    });
-    result.push(totalSum);
-    console.log(result)
-  }
-
-  //arguments
-  function argmnts() {
-    return result = (arguments.length) ? 1 : 0;
-
-  }
-
-  function argumentsSum() {
-    let result = 0;
-    for (let i = 0; i < arguments.length; i++) {
-      result += arguments[i];
-      console.log(typeof result);
     }
-    return result;
-  }
 
-  //date
+    let classes = {
+        className: 'open menu'
+    }
+
+    function filterClassName() {
+
+
+    }
+
+    let words = ["Есть", "жизнь", "на", "Марсе"];
+
+    function forToMap() {
+        let lengthAr = words.map(function (word) {
+            return word.length
+        });
+        alert(lengthAr)
+    }
+
+    let nmbs = [1, 2, 3, 4, 5];
+
+    function getSums(arr) {
+        let result = [];
+        if (!arr.length) return result;
+
+        let totalSum = arr.reduce(function (prev, curr) {
+            result.push(prev);// заносит prev - результат суммы
+            console.log(prev + ' prev');
+            console.log(curr + ' curr');
+            return prev + curr // это значение возвращает prev
+
+        });
+        result.push(totalSum);
+    }
+
+    function getMnoj(arr) {
+        let result = [];
+        if (!arr.length) return result;
+        let totalSum = arr.map(function (item, i) {
+            if (arr[i - 1] > 0) {
+                return item * arr[i - 1]
+
+            }
+
+
+        });
+        result.push(totalSum);
+        console.log(result)
+    }
+
+    //arguments
+    function argmnts() {
+        return result = (arguments.length) ? 1 : 0;
+
+    }
+
+    function argumentsSum() {
+        let result = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            result += arguments[i];
+            console.log(typeof result);
+        }
+        return result;
+    }
+
+    //date
 </script>
