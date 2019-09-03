@@ -72,6 +72,20 @@
 
   };
 
+  const findArr =["test", 2, 1.5, false];
+
+  find = (arr, value) => {
+     let result = arr.find(val=> {
+       return val === value;
+  });
+     return result ? arr.indexOf(result) : -1;
+  };
+
+  const filterArr = [5, 4, 3, 8, 0];
+
+  filterRange = (arr=[], a, b) => {
+      return arr.filter(elem => elem >= a && elem <=b)
+  };
 
   function sumInput() {
 
@@ -125,7 +139,18 @@
       }
       return classes;
   };
+const clearArr = [5, 3, 8, 1];
 
+  filterRangeInPlace=(arr, a, b)=>{
+      for(let el of arr) {
+          console.log(el);
+          if(a <= el <= b) break;
+          else{
+              arr.splice(arr.indexOf(el),1);
+          }
+      }
+      console.log(arr);
+  };
   camelize = (str) => {
       let pos = str.indexOf('-') + 1;
       let symb = str.charAt(pos).toLocaleUpperCase();
