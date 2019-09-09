@@ -115,6 +115,16 @@
     //
     // };
 
+    //array methods
+    camelize = (str) => {
+        const pos = str.indexOf('-') + 1;
+        const symb = str.charAt(pos).toLocaleUpperCase();
+        const first_word = str.slice(0, pos - 1);
+        const second_word = str.slice(pos + 1);
+        const class_name = first_word + symb + second_word;
+        return class_name;
+    };
+
     let customClasses = {
         className: 'open close'
     };
@@ -167,18 +177,31 @@
         return arrSorted;
     };
 
-    // randomShake=(arr)=>{
-    //  const result = arr.sort((a,b)=>{
-    // });
-    //     return result;
-    // };
+    randomShake=(arr=[])=>{
+     const result = arr.sort((a,b)=>{
+         return b-a;
+    });
+        return result;
+    };
 
-    // camelize = (str) => {
-    //     let pos = str.indexOf('-') + 1;
-    //     let symb = str.charAt(pos).toLocaleUpperCase();
-    //     // let newStr = str.replace(pos, pos, symb);
-    //     //console.log(newStr);
-    // };
+
+    shuffle=(arr=[])=>{
+        const _arr =arr.concat();
+        let qty= arr.length;
+        const returnArray = [];
+
+        while(qty--) {
+            const rand = Math.floor(Math.random() * _arr.length);
+            returnArray.push(_arr[rand]);
+            _arr.splice(rand, 1);
+            if (!_arr.length) {
+                return returnArray;
+            }
+        }
+        return returnArray;
+    };
+
+
 
 
     //objects as massive
