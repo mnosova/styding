@@ -24,13 +24,17 @@
           <li><a href="blockly.html">Blockly</a></li>
           <li><a href="learnjsbasic.html">Learn JavaScript.Основы</a></li>
           <li><a href="learnjsstructure.html">Learn JavaScript.Структура</a></li>
-          <li><a href="#">Рабочие задачки</a></li>
+          <li><a href="work.html">Рабочие задачки</a></li>
         </ul>
       </header>
       <div class="page page__work">
         <p><b>Задачи с работки</b></p>
         <p>
-          проверка числа - дает ли сумма любых двух числел в массиве это число.  p: button(onclick='alert (checkNumber(b,a) )') запуск</p>
+          проверка числа - дает ли сумма любых двух числел в массиве это число.
+        </p>
+        <p>
+          <button onclick="alert (checkNumber(b,a) )">запуск</button>
+        </p>
         <p>проверка входящего параметра - является ли это частью объекта/ массива.
           <p>
             <button onclick="alert (checkParam(c,d) )">запуск</button>
@@ -82,6 +86,18 @@
         </p>
         <p>
           <button onclick="alert( argumentsSum(1,5,6,7) )">запуск</button>
+        </p>
+        <p>
+          получить рандомный массив элементов из основного массива
+          в качестве параметров кол-во запрашиваемых элементов и массив для поиска
+        </p>
+        <p>
+          <button onclick="console.log(getRandomItems(d,3))">запуск</button>
+        </p>
+
+        <p>разбить массив на подмассивы, создать новый массив с подмассивами</p>
+        <p>
+          <button onclick="console.log(sliceArray(slArray,2))">запуск</button>
         </p>
       </div>
       <link rel="import" href="../content/work-js.html">

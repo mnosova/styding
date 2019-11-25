@@ -516,40 +516,50 @@
 	//ilya
 
     let a = [10, 20, 15, 1, 2, 3, 4, 5, 6, 7];
-    let b = 8;
+    let b = 589;
+
+
+//нам небходимо каждое число сложить другим
+// то есть для каждого числа должен сработать перебор
+// поэтому функция имеет вдва цикла for
+//первый цикл берет каждое число по очереди в отдельности
+// и для каждого срабатывает второй цикл складывая себя с соседним
+// с соседним потому что с предыдущим сумма была получена в цикле ранее
+// таким образом для числа 10 будет найденно 9 сумм
+// а для числа 6 только одна сумма (6+7) т.к. (5+6) уже была найдена для цифры 5
+// для числа 7 вообще нет суммы
 
     function checkNumber(number, arr) {
         let sum;
         let result = false;
-        for (let i = 0; i < arr.length; i++) {
+        for (let i = 0; i < arr.length - i; i++) {
             for (let j = i; j < arr.length - 1; j++) {
                 sum = arr[i] + arr[j + 1];
-                if (sum === number) {
-                    return result = true;
-                }
-
+                result = sum === number;
+                if (result) return result;
             }
-
         }
-
         return result;
     }
 
-    let c = undefined;
+    let c = 'tatata';
     let d = [10, 3, 89, {"key1": "1", "key2": "2", "key3": "3"}, true, "tatata", [7, 8, 9]];
 
+
+    //1. сравнивая между собой значения, которые могут быть различными по типу
+    //2. объекты никогда не равны
+    // поэтому каждый элемент массива приводится к строке json(обычную строку тоже нельзя сравнить)
     function checkParam(param, arr) {
-        let result = [];
+        let result = false;
 
         for( let i = 0; i < arr.length; i++) {
-            if (JSON.stringify(arr[i]) === JSON.stringify(param)) result.push(true);
-            else result.push(false);
+            result = JSON.stringify(arr[i]) === JSON.stringify(param);
+            if (result) return result;
         }
-        return !!(result.indexOf(true) !== -1);
-
+        return result;
     }
 
-
+//простой fetch get запрос с обработкой ошибки
     function getUser() {
         fetch(`https://jsonplaceholder.typicode.com/users/${payload.id}`)
             .then((response) => {
@@ -573,6 +583,7 @@
 
     };
 
+    //post запрос со сформированными данными в массиве
     function getUser2() {
         fetch('http://httpbin.org/post', payload)
             .then(response => {
@@ -592,6 +603,7 @@
         method: 'get'
     };
 
+    //простой axios get запрос с обработкой ошибки
     function getAxios() {
         axios(`https://jsonplaceholder.typicode.com/users/${payload.id}`, options)
             .then(response => {
@@ -611,6 +623,8 @@
     }
 
 
+    //использование асинхронной функции в запросе
+    // суть в том чтобы дождаться получения данных
     async function getPerson(id) {
         try {
             let response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
@@ -657,7 +671,7 @@
 
     }
 
-
+//цепочка асинхронных вызовов, пока не получим одно не получим и другое
     async function fetchAcyncResult() {
         try {
             let user = await getPerson(5);
@@ -678,6 +692,8 @@
     const key = '3bcab38c01345ef3bbc4b3bd63cc517a';
     let city = 'London';
 
+    //fetch работа с api
+    //формирование построки запроса
     function getWeather() {
         function weatherRequest() {
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`, {
@@ -698,6 +714,81 @@
         setInterval(function () {
             weatherRequest();
         }, 60000);
+    }
+
+    //axios работа с api
+    //формирование построки запроса
+    const key2  = '6bfa8f72fd4dacbb8246f9847f323990aabdfbf140fe0b08022354cf7d45a325c4ba69a5b2b2f55285869';
+    const url = `https://api.vk.com/method/groups.getById?group_ids=19103050&fields=members_count&access_token=${key2}&v=5.27`;
+    axios.get(url)
+        .then((res) => {
+            console.log(res);
+            const { members_count } = res.response[0];
+            res.status(200).send({
+                subscribers: members_count
+            });
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+
+
+
+    const slArray = [
+        {
+            'id': 1,
+            'name': 'one'
+        },
+        {
+            'id': 2,
+            'name': 'two'
+        },
+        {
+            'id': 3,
+            'name': 'three'
+        },
+        {
+            'id': 4,
+            'name': 'four'
+        },
+        {
+            'id': 5,
+            'name': 'five'
+        }
+    ];
+
+    function sliceArray(array=[], slice_mount ) {
+        let slicedArray =[];
+        for (let i = 0; i < Math.ceil(array.length/slice_mount); i++){
+            slicedArray[i] = array.slice( (i*slice_mount), (i*slice_mount) + slice_mount );
+        }
+        return slicedArray;
+    }
+
+
+    function getRandomItems(array = [], qty = 1) {
+        //проверки
+        if (!Array.isArray(array) || !array.length || !qty) {
+            return [];
+        }
+        //копируем массив чтобы не менять оригинальный
+        const _array = array.concat();
+        const returnArray = [];
+        //условие пока колво не станет 0
+        //работает каждый раз
+        while(qty--) {
+            //берем рандомное число из кол-ва элементов в массиве
+            const rand = Math.floor(Math.random() * _array.length);
+            //заносим элемент с рандомным индексом в новый массив
+            returnArray.push(_array[rand]);
+            //отрезаем этот элемент от массва из которого брали
+            _array.splice(rand, 1);
+            //и если в массиве из которого берем ничего не остается, то возвращаем что получили
+            if (!_array.length) {
+                return returnArray;
+            }
+        }
+        return returnArray;
     }
 
 </script>
