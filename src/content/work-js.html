@@ -759,7 +759,11 @@
 
     function sliceArray(array=[], slice_mount ) {
         let slicedArray =[];
+        //разбивает массив на столько частей, чтобы в каждом подмассиве было по slice_mount
+        //array.length/slice_mount количество частей, количество итераций
         for (let i = 0; i < Math.ceil(array.length/slice_mount); i++){
+            //заполняет новый массив с 0 по slice_mount
+            //c пред места по новое место и т.д.
             slicedArray[i] = array.slice( (i*slice_mount), (i*slice_mount) + slice_mount );
         }
         return slicedArray;

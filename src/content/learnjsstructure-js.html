@@ -178,19 +178,43 @@
     };
 
     randomShake=(arr=[])=>{
-     const result = arr.sort((a,b)=>{
-         return b-a;
-    });
+     const result = arr.sort(()=> Math.random() - 0.5);
         return result;
     };
 
+    let vasya = { name: "Вася", surname :"Пупкин", age: 23 };
+    let masha = { name: "Маша", surname :"Печкина",  age: 18 };
+    let vovochka = { name: "Вовочка", surname :"Петров", age: 6 };
 
-    shuffle=(arr=[])=>{
-        const _arr =arr.concat();
-        let qty= arr.length;
+    let people = [ vasya , masha , vovochka ];
+
+
+    sortByAge = (array = []) => {
+        return [array.concat().sort((a, b) => a.age - b.age)];
+    };
+
+    let petya = { name: "Петя", surname :"Иванов", age: 30 };
+    let users = [ vasya, petya, masha ];
+
+    getNames = ( array=[] ) => {
+        return [array.map(person=>person.name)];
+    };
+
+    getFullNames = (array = []) => {
+        return array.map(person=>{
+            return  {
+                fullName: `${person.name} ${person.surname}`,
+                id: person.id
+            }
+        })
+    };
+
+    shuffle = (arr = []) => {
+        const _arr = arr.concat();
+        let qty = arr.length;
         const returnArray = [];
 
-        while(qty--) {
+        while (qty--) {
             const rand = Math.floor(Math.random() * _arr.length);
             returnArray.push(_arr[rand]);
             _arr.splice(rand, 1);
@@ -201,8 +225,11 @@
         return returnArray;
     };
 
-
-
+    getAverageAge = (arr = []) => {
+      let number = arr.map(person=>person.age)
+          .reduce((a,b)=> a+b);
+         return Math.ceil(number/3);
+    };
 
     //objects as massive
     function objectCreate() {

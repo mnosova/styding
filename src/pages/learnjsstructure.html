@@ -436,7 +436,7 @@
 			alert(people[0].age) // 6
 			Выведите список имён в массиве после сортировки.
 		</p>
-		<!--p: button(onclick='') запуск-->
+		<button onclick="console.log(sortByAge(people))">запуск</button>
 		<p>У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
 		   Например:
 		   let vasya = { name: "Вася", age: 25 };
@@ -445,9 +445,8 @@
 		   let users = [ vasya, petya, masha ];
 		   let names = /* ... ваш код */
 		   alert( names ); // Вася, Петя, Маша</p>
-		<!--<p>-->
-		<!--<button></button>-->
-		<!--</p>-->
+
+		<button onclick="console.log(getNames(users))">запуск</button>
 		<p>У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
 		   Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
 		   Например:
@@ -466,9 +465,7 @@
 		   alert( usersMapped[0].id ) // 1
 		   alert( usersMapped[0].fullName ) // Вася Пупкин
 		   Итак, на самом деле вам нужно трансформировать один массив объектов в другой. Попробуйте использовать =>. Это небольшая уловка.</p>
-		<!--<p>-->
-		<!--<button></button>-->
-		<!--</p>-->
+		<button onclick="console.log(getFullNames(users))">запуск</button>
 		<p>Односвязный список – это структура данных, которая состоит из элементов, каждый из которых хранит ссылку на следующий. Последний элемент может не иметь ссылки, либо она равна null.</p>
 		<!--p: button(onclick='') запуск-->
 		<p>
@@ -494,20 +491,7 @@
 			alert( unique(strings) ); // кришна, харе, 8-()
 		</p>
 		<!--p: button(onclick='') запуск-->
-		<p>
-			Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
-			Например:
-			let vasya = { name: "Вася", age: 25 };
-			let petya = { name: "Петя", age: 30 };
-			let masha = { name: "Маша", age: 28 };
-			let arr = [ vasya, petya, masha ];
-			sortByAge(arr);
-			// теперь: [vasya, masha, petya]
-			alert(arr[0].name); // Вася
-			alert(arr[1].name); // Маша
-			alert(arr[2].name); // Петя
-		</p>
-		<!--p: button(onclick='') запуск-->
+
 		<p>
 			Напишите функцию shuffle(array), которая перемешивает (переупорядочивает случайным образом) элементы массива.
 			Многократные прогоны через shuffle могут привести к разным последовательностям элементов. Например:
@@ -537,7 +521,7 @@
 
 			alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
 		</p>
-		<!--p: button(onclick='') запуск-->
+		<button onclick="console.log(getAverageAge(people))">запуск</button>
 		<p><b>Массив: перебирающие методы</b></p>
 		<p><b>Массивы: методы</b></p>
 		<p>Взятие N
