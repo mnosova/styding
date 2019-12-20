@@ -107,14 +107,41 @@
         return sum;
     }
 
-    // getMaxSubSum=(numbers)=>{
-    //   let sum =0;
-    //   for(num of numbers){
-    //     sum+=+num;
-    //   }
-    //
-    // };
 
+    let maxsum1 =[-1, 2, 3, -9];
+    let maxsum2 =[2, -1, 2, 3, -9];
+    let maxsum3 =[-1, 2, 3, -9, 11];
+
+    getMaxSubSum=(arr=[])=> {
+      //каждый раз записываем (переписывае) в maxSum результат сравнения
+      //за основу берем ноль, чтобы венуть 0, потому что 0 больше отрицательного числа
+      let maxSum = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        let sumFixedStart = 0;
+        //вложенный массив происходит для элемента на котором остановились выше
+        for (let j = i; j < arr.length; j++) {
+          //sumFixedStart это рузельтат предыдущей + текущее значение
+          sumFixedStart += arr[j]; //0+(-1);-1+2;1+3;4+(-9);
+          //maxSum это сравнение предыдущего максимума с sumFixedStart
+          maxSum = Math.max(maxSum, sumFixedStart);//0>-1;1>0;4>1;4>-9;
+          //после первой итерации максимальная сумма это 4
+          //после второй это 5 и после третей 5
+        }
+      }
+      return maxSum;
+
+    };
+    getMaxSubSum2 = (arr = []) => {
+      let maxSum = 0;
+      let sumFixedStart = 0;
+      for (let num of arr) {
+        sumFixedStart += num;
+        maxSum = Math.max(maxSum, num);
+        if(sumFixedStart<0) sumFixedStart=0;
+      }
+      return maxSum;
+    };
     //array methods
     camelize = (str) => {
         const pos = str.indexOf('-') + 1;
