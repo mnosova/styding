@@ -1,5 +1,6 @@
 <script>
     //numbers
+    //done
     function sum() {
         let a = +prompt("Введите первое число", "");
         let b = +prompt("Введите второе число", "");
@@ -13,6 +14,21 @@
 
     }
 
+    //done
+    function readNumber() {
+      let num;
+
+      do {
+        num = prompt("Введите число", 0);
+      } while ( !isFinite(num) );
+
+      if (num === null || num === '') return null;
+
+      return +num;
+    }
+
+
+
     function random(max) {
         let result = Math.round(Math.random() * max);
         return result;
@@ -24,32 +40,34 @@
         return result;
 
     }
-
+    //done
     function randomInteger(min, max) {
         let rand = min + Math.random() * (max + 1 - min);
-        rand = Math.floor(rand);
-        return rand;
+      return Math.floor(rand);
+
     }
 
     //string
+    //done
+    // Если строка пуста, str[0] вернёт undefined,
+    // а у undefined нет метода toUpperCase(), поэтому мы получим ошибку.
     function ucFirst(str) {
 
         if (!str) return str;
         return str[0].toUpperCase() + str.slice(1);
 
     }
-
+    //done
     function checkSpam(str) {
-        if (!str) return str;
-        lowerCase = str.toLowerCase();
-        return !!(~lowerCase.indexOf('viagra') || ~lowerCase.indexOf('xxx'))
+      let lowerStr = str.toLowerCase();
+
+      return lowerStr.includes('viagra') || lowerStr.includes('xxx');
     }
 
+    //done
     function truncate(str, maxlength) {
-        if (str.length > maxlength) {
-            return str.slice(0, maxlength - 3) + '...';
-        }
-        return str;
+      return (str.length > maxlength) ?
+        str.slice(0, maxlength - 1) + '…' : str;
 
     }
 
@@ -67,6 +85,7 @@
         return result;
     };
 
+    //done
     extractCurrencyValue = (string) => {
         return +string.slice(1);
 
@@ -86,26 +105,6 @@
     filterRange = (arr = [], a, b) => {
         return arr.filter(elem => elem >= a && elem <= b)
     };
-
-    function sumInput() {
-
-        let numbers = [];
-
-        while (true) {
-
-            let value = prompt("Введите число", 0);
-
-            if (value === "" || value === null || !isFinite(value)) break;
-
-            numbers.push(+value);
-        }
-
-        let sum = 0;
-        for (let number of numbers) {
-            sum += number;
-        }
-        return sum;
-    }
 
 
     let maxsum1 =[-1, 2, 3, -9];
@@ -235,6 +234,63 @@
             }
         })
     };
+const anagram = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+    function aclean(arr) {
+      let obj = {};
+
+      for (let i = 0; i < arr.length; i++) {
+        // отсортированные буквы слова воз --- взо
+        let sorted = arr[i].toLowerCase().split("").sort().join("");
+        //переписываем значение ключа по каждому отсортированному слову
+        //если встретим такое
+        //сначала 'взо': 'воз', затем 'взо': 'ЗОВ'
+        obj[sorted] = arr[i];
+      }
+
+      return Object.values(obj);
+    }
+
+    let strings = ["кришна", "кришна", "харе", "харе",
+      "харе", "харе", "кришна", "кришна", "8-()"
+    ];
+// мой способо
+    function unique(arr=[]){
+      let newArr=[];
+      //перебираем все слова в массиве
+      for(let i=0; i<=arr.length-1;i++){
+        //если соседи равны, прерываем и продолжаем
+        if (arr[i] === arr[i+1]) continue;
+        else {
+          //если нет, то зансим слово в новый массв
+          newArr.push(arr[i]);
+          //если в массиве набрались слова
+          if (newArr.length>2){
+            //проверяем чтобы в нем не оказалось повторов,
+            //не учитвывем слово которое только что добавили
+            for(let j=0; j<=newArr.length-2; j++){
+              //если уже есть такое слово где то вначале,то удаляем из конца
+              //так как добавили его последним
+              if(newArr[j] === arr[i]) newArr.pop();
+            }
+          }
+        }
+      }
+      return newArr;
+    }
+
+//норм способ
+    function unique2(arr) {
+      let result = [];
+
+      for (let str of arr) {
+        if (!result.includes(str)) {
+          result.push(str);
+        }
+      }
+
+      return result;
+    }
+
 
     shuffle = (arr = []) => {
         const _arr = arr.concat();
@@ -454,5 +510,142 @@
         return result;
     }
 
-    //date
+    //DATE
+    createDate =()=>{
+      let date = new Date(2012,1,20,3,12);
+      return date;
+
+    };
+    let customDate = new Date(2012, 0, 3);
+
+    //мое решение
+    getWeekDay=(date)=>{
+      let week_day = date.getDay();
+      let result;
+      switch (week_day) {
+        case 0: return result = 'вс';
+        case 1: return result = 'пн';
+        case 2: return result = 'вт';
+        case 3: return result = 'ср';
+        case 4: return result = 'чт';
+        case 5: return result = 'пт';
+        case 6: return result = 'сб';
+      }
+
+    };
+
+    //учебник
+    getWeekDay2=(date)=> {
+      let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+      return days[date.getDay()];
+    };
+
+    //учебник
+    getLocalDay=(date)=> {
+      let day = date.getDay();
+
+      if (day === 0) { // день недели 0 (воскресенье) в европейской нумерации будет 7
+        day = 7;
+      }
+
+      return day;
+    };
+
+    getDateAgo=(date, days)=>{
+      let day= date.getDate();
+      let newDate = new Date(date);
+      newDate.setDate(day-days);
+      return newDate;
+
+    };
+
+    getLastDayOfMonth =(year, month) =>{
+      //мой вариант
+      let date = new Date(year, month+1);
+      //вариант учебника, если передать 0,то выдаст последний день пред. месяца hack
+      let date2 = new Date(year, month + 1, 0);
+      date.setDate(date.getDate()-1);
+     return date.getDate();
+    };
+
+    getSecondsToday=()=>{
+      let now = new Date;
+      let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      return Math.round((now -date) / 1000);
+    };
+
+    getSecondsToTomorrow=()=>{
+      let now = new Date;
+      let date = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+      return Math.round((date -now) / 1000);
+    };
+    let  d = new Date(2014, 0, 30);
+
+
+    formatDate = (d) => {
+      const date = +d;
+      const now =  Date.now();
+      const diff = Math.ceil(now - date);
+      console.log('diff', diff);
+      if(0 < diff && diff <= 1000 ){
+        return 'только что';
+      } else if(1000 <= diff &&  diff< 60000 ){
+        return `${Math.ceil(diff/1000)} сек. назад`;
+      }
+      else if(60000 <= diff &&  diff< 3600000 ){
+        return `${Math.ceil(diff/60000)} минут. назад`;
+      }
+      else if(3600000 <= diff &&  diff< 86400000 ){
+        return `${ Math.round(diff/3600000)} часов. назад`;
+      } else if(86400000 <= diff){
+
+        let full_date = d;
+        full_date = [
+          '0' + d.getDate(),
+          '0' + (d.getMonth() + 1),
+          '' + d.getFullYear(),
+          '0' + d.getHours(),
+          '0' + d.getMinutes()
+        ].map(component => component.slice(-2));
+        return full_date.slice(0, 3).join('.') + ' ' + full_date.slice(3).join(':');
+      }
+    };
+//учебник
+    formatDate2 = (date) => {
+      let dayOfMonth = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let hour = date.getHours();
+      let minutes = date.getMinutes();
+      let diffMs = new Date() - date;
+      let diffSec = Math.round(diffMs / 1000);
+      let diffMin = diffSec / 60;
+      let diffHour = diffMin / 60;
+
+      // форматирование
+      year = year.toString().slice(-2);
+      month = month < 10 ? '0' + month : month;
+      dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
+      hour = hour < 10 ? '0' + hour : hour;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+
+      if (diffSec < 1) {
+        return 'прямо сейчас';
+      } else if (diffMin < 1) {
+        return `${diffSec} сек. назад`
+      } else if (diffHour < 1) {
+        return `${diffMin} мин. назад`
+      } else {
+        return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
+      }
+    };
+
+    returnFormatDate=()=>{
+      console.log( formatDate (new Date(new Date - 1)) );
+      console.log( formatDate(new Date(new Date - 30 * 1000)) );
+      console.log( formatDate(new Date(new Date - 5 * 60 * 1000)) );
+      console.log( formatDate(new Date(new Date - 79200 * 1000)) );
+      console.log( formatDate(new Date(new Date - 86400 * 1000)) );
+    };
+
 </script>
