@@ -34,7 +34,7 @@
 		<p>
 			Создайте страницу, которая предлагает ввести два числа и выводит их сумму.P.S. Есть «подводный камень» при работе с типами.</p>
 		<p>
-			<button onclick="alert( sum() )">запуск</button>
+			<button onclick="console.log( sum() )">запуск</button>
 		</p>
 		<p>
 			Создайте функцию readNumber, которая будет запрашивать ввод числового значения до тех пор, пока посетитель его не введёт.
@@ -44,7 +44,7 @@
 			Также надо разрешить пользователю остановить процесс ввода, отправив пустую строку или нажав «Отмена». В этом случае функция должна вернуть null.
 		</p>
 		<p>
-			<button onclick="alert( readNumber() )">запуск</button>
+			<button onclick="console.log( readNumber() )">запуск</button>
 		</p>
 		<p>
 			Получится глупо, если при заказе двух товаровс ценами 0.10$ и 0.20$ человек получит общую стоимость 0.30000000000000004$;
@@ -52,7 +52,7 @@
 			Что можно сделать, чтобы избежать проблем с ошибками округления?
 		</p>
 		<p>
-			<button onclick="alert( mnojItem() )">запуск</button>
+			<button onclick="console.log( mnojItem() )">запуск</button>
 		</p>
 		<p>Напишите код для генерации случайного значения в диапазоне от 0 до max, не включая max.</p>
 		<p>
@@ -60,12 +60,12 @@
 		</p>
 		<p>Напишите код для генерации случайного числа от min до max, не включая max.</p>
 		<p>
-			<button onclick="alert( randomBetween(8,19) )">запуск</button>
+			<button onclick="console.log( randomBetween(8,19) )">запуск</button>
 		</p>
 		<p>
 			Напишите функцию randomInteger(min, max) для генерации случайного целого числа между min и max, включая min,max как возможные значения.Любое число из интервала min..max должно иметь одинаковую вероятность.</p>
 		<p>
-			<button onclick="alert( randomInteger(1,10) )">запуск</button>
+			<button onclick="console.log( randomInteger(1,10) )">запуск</button>
 		</p>
 		<p><b>Строки</b></p>
 		<p>
@@ -74,7 +74,7 @@
 			P.S. В JavaScript нет встроенного метода для этого. Создайте функцию, используя toUpperCase() и charAt().
 		</p>
 		<p>
-			<button onclick="alert(ucFirst('вася'))">запуск</button>
+			<button onclick="console.log(ucFirst('вася'))">запуск</button>
 		</p>
 		<p>
 			Напишите функцию checkSpam(str), которая возвращает true, если строка str содержит „viagra“ или „XXX“, а иначе false.Функция должна быть нечувствительна к регистру:
@@ -83,7 +83,7 @@
 			checkSpam("innocent rabbit") == false
 		</p>
 		<p>
-			<button onclick="alert( checkSpam('XXX') )">запуск</button>
+			<button onclick="console.log( checkSpam('XXX') )">запуск</button>
 		</p>
 		<p>
 			Создайте функцию truncate(str, maxlength), которая проверяет длину строки str, и если она превосходит maxlength – заменяет конец str на "...", так чтобы ее длина стала равна maxlength.Результатом функции должна быть (при необходимости) усечённая строка.
@@ -94,7 +94,7 @@
 			P.S. В кодировке Unicode существует специальный символ «троеточие»: … (HTML: &hellip;), но в этой задаче подразумеваются именно три точки подряд.
 		</p>
 		<p>
-			<button onclick="alert( truncate('Вот, что мне хотелось бы сказать на эту тему', 20) )">запуск</button>
+			<button onclick="console.log( truncate('Вот, что мне хотелось бы сказать на эту тему', 20) )">запуск</button>
 		</p>
 		<p>
 			Есть стоимость в виде строки: "$120". То есть, первым идёт знак валюты, а затем – число.Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять число-значение, в данном случае 120.
@@ -124,7 +124,7 @@
 			alert( isEmpty(schedule) ); // false
 		</p>
 		<p>
-			<button onclick="alert( isEmpty(schedule) );">запуск</button>
+			<button onclick="console.log( isEmpty(schedule) );">запуск</button>
 		</p>
 		<p>
 			Есть объект salaries с зарплатами. Напишите код, который выведет сумму всех зарплат.Если объект пустой, то результат должен быть 0.
@@ -138,7 +138,7 @@
 			//... ваш код выведет 650
 		</p>
 		<p>
-			<button onclick="alert( sumSalaries(salaries) )">запуск</button>
+			<button onclick="console.log( sumSalaries(salaries) )">запуск</button>
 		</p>
 		<p>
 			Есть объект salaries с зарплатами. Напишите код, который выведет имя сотрудника, у которого самая большая зарплата.Если объект пустой, то пусть он выводит «нет сотрудников».
@@ -152,7 +152,7 @@
 			// ... ваш код выведет "Петя"
 		</p>
 		<p>
-			<button onclick="alert( whoIsRich(salaries) )">запуск</button>
+			<button onclick="console.log( whoIsRich(salaries) )">запуск</button>
 		</p>
 		<p>
 			Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2. Например: // до вызова
@@ -369,6 +369,7 @@
 			P.S. Вам пригодятся методы строк charAt, split и toUpperCase.
 		</p>
 		<button onclick="console.log(camelize('background-color'))">запуск</button>
+		<button onclick="console.log(camelize2('background-color'))">запуск</button>
 		<p>
 			У объекта есть свойство className, которое хранит список «классов» – слов, разделенных пробелами:
 			var obj = {
@@ -570,6 +571,19 @@
 		</p>
 		<p>
 			<button onclick="getMnoj(nmbs)">запуск</button>
+		</p>
+		<p><b>Псевдомассив аргументов "arguments"</b></p>
+		<p>
+			Как в функции отличить отсутствующий аргумент от undefined?
+		</p>
+		<p>
+			<button onclick="console.log(argmnts())">запуск</button>
+		</p>
+		<p>
+			Напишите функцию sum(...), которая возвращает сумму всех своих аргументов:
+		</p>
+		<p>
+			<button onclick="console.log(argumentsSum(1,2,3))">запуск</button>
 		</p>
 		<p><b>Дата и время</b></p>
 		<p>

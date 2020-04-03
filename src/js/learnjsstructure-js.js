@@ -26,13 +26,13 @@ readNumber = () => {
     return +num;
 };
 
-
+//done
 random = (max) => {
-    let result = Math.round(Math.random() * max);
+    let result = Math.round(Math.random() * (max-1));
     return result;
 
 };
-
+//done
 randomBetween = (min, max) => {
     let result = min + Math.random() * (max - min - 1);
     return result;
@@ -68,7 +68,7 @@ truncate = (str, maxlength) => {
         str.slice(0, maxlength - 1) + '…' : str;
 
 };
-
+//done
 askGetSum = () => {
     let sums = [];
     let num = 0;
@@ -90,7 +90,7 @@ extractCurrencyValue = (string) => {
 };
 
 const findArr = ["test", 2, 1.5, false];
-
+//done
 find = (arr, value) => {
     let result = arr.find(val => {
         return val === value;
@@ -99,7 +99,7 @@ find = (arr, value) => {
 };
 
 const filterArr = [5, 4, 3, 8, 0];
-
+//done
 filterRange = (arr = [], a, b) => {
     return arr.filter(elem => elem >= a && elem <= b)
 };
@@ -108,7 +108,7 @@ filterRange = (arr = [], a, b) => {
 let maxsum1 = [-1, 2, 3, -9];
 let maxsum2 = [2, -1, 2, 3, -9];
 let maxsum3 = [-1, 2, 3, -9, 11];
-
+//done
 getMaxSubSum = (arr = []) => {
     //каждый раз записываем (переписывае) в maxSum результат сравнения
     //за основу берем ноль, чтобы венуть 0, потому что 0 больше отрицательного числа
@@ -140,6 +140,8 @@ getMaxSubSum2 = (arr = []) => {
     return maxSum;
 };
 //array methods
+
+//done
 camelize = (str) => {
     const pos = str.indexOf('-') + 1;
     const symb = str.charAt(pos).toLocaleUpperCase();
@@ -149,9 +151,24 @@ camelize = (str) => {
     return class_name;
 };
 
+//done
+camelize2=(str)=>{
+
+    return str.split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+        .map(
+            // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого
+            // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+            (word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+        )
+        .join(''); // соединяет ['my', 'Long', 'Word'] в 'myLongWord
+};
+
+
 let customClasses = {
     className: 'open close'
 };
+
+//done
 addClass = (classes, cls) => {
     if (!classes.className.includes(cls)) {
         let stringArr = classes.className.split(' ');
@@ -165,7 +182,7 @@ let customObject = {
     className: 'this that add'
 };
 
-
+//done
 removeClass = (classes, cls) => {
     if (classes.className.includes(cls)) {
         let stringArr = classes.className.split(' ');
@@ -175,6 +192,7 @@ removeClass = (classes, cls) => {
 };
 const clearArr = [5, 3, 8, 1];
 
+//done
 filterRangeInPlace = (arr, a, b) => {
     for (let el of arr) {
         if (a <= el && el <= b) break;
@@ -186,21 +204,21 @@ filterRangeInPlace = (arr, a, b) => {
 };
 
 const sortReverseArr = [5, 2, 1, -10, 8];
-
+//done
 sortReverse = (arr = []) => {
     return arr.sort().reverse();
 
 };
 
 const array = ["HTML", "JavaScript", "CSS"];
-
+//done
 arrSorted = (arr) => {
     const arrSorted = arr.slice().reverse();
     console.log(arr);
     console.log(arrSorted);
     return arrSorted;
 };
-
+//done
 randomShake = (arr = []) => {
     const result = arr.sort(() => Math.random() - 0.5);
     return result;
@@ -212,7 +230,7 @@ let vovochka = {name: "Вовочка", surname: "Петров", age: 6};
 
 let people = [vasya, masha, vovochka];
 
-
+//done
 sortByAge = (array = []) => {
     return [array.concat().sort((a, b) => a.age - b.age)];
 };
@@ -220,10 +238,11 @@ sortByAge = (array = []) => {
 let petya = {name: "Петя", surname: "Иванов", age: 30};
 let users = [vasya, petya, masha];
 
+//done
 getNames = (array = []) => {
     return [array.map(person => person.name)];
 };
-
+//done
 getFullNames = (array = []) => {
     return array.map(person => {
         return {
@@ -233,7 +252,7 @@ getFullNames = (array = []) => {
     })
 };
 const anagram = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
-
+//done
 function aclean(arr) {
     let obj = {};
 
@@ -252,7 +271,7 @@ function aclean(arr) {
 let strings = ["кришна", "кришна", "харе", "харе",
     "харе", "харе", "кришна", "кришна", "8-()"
 ];
-
+//done
 // мой способо
 function unique(arr = []) {
     let newArr = [];
@@ -277,7 +296,7 @@ function unique(arr = []) {
     }
     return newArr;
 }
-
+//done
 //норм способ
 function unique2(arr) {
     let result = [];
@@ -291,7 +310,8 @@ function unique2(arr) {
     return result;
 }
 
-
+//done
+// есть улучшенная через sort()
 shuffle = (arr = []) => {
     const _arr = arr.concat();
     let qty = arr.length;
@@ -311,7 +331,7 @@ shuffle = (arr = []) => {
 getAverageAge = (arr = []) => {
     let number = arr.map(person => person.age)
         .reduce((a, b) => a + b);
-    return Math.ceil(number / 3);
+    return Math.ceil(number / arr.length);
 };
 
 //done
@@ -327,8 +347,11 @@ function objectCreate() {
     console.log(user);
 
 }
-
+//done
 function isEmpty(obj) {
+    console.log(obj);
+    console.log(Object.keys(obj));
+    console.log(Object.keys(obj).length);
     for (let key in obj) {
         return false;
     }
@@ -342,7 +365,7 @@ let schedule = {};
 schedule["8:30"] = "подъём";
 //
 //    alert( isEmpty(schedule) ); // false
-
+//done
 function sumSalaries(salaries) {
 
     let sum = 0;
@@ -359,7 +382,7 @@ let salaries = {
     "Petya": 300,
     "Dasha": 250
 };
-
+//done
 function whoIsRich(salaries) {
 
     let max = 0;
@@ -369,11 +392,10 @@ function whoIsRich(salaries) {
             max = salaries[name];
             maxName = name;
         }
-
     }
     return maxName;
 }
-
+//done
 function multiplyNumeric(menu) {
     for (let key in menu) {
         if (isNumeric(menu[key])) {
@@ -394,19 +416,19 @@ let menu = {
 };
 
 let goods = ['apple', 'orange', 'banana'];
-
+//done
 function getLastFruit() {
     alert(goods);
     alert(goods[goods.length - 1]);
 }
-
+//done
 function pushToArray() {
     goods[goods.length] = 'melon';
     alert(goods);
 }
 
 let styles = ['Джаз', 'Блюз'];
-
+//done
 function unshiftArray() {
     alert(styles);
     styles[styles.length] = 'Рок-н-Ролл';
@@ -421,7 +443,7 @@ function unshiftArray() {
 }
 
 let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
-
+//done
 function alertRandom() {
     let min = 0;
     let max = arr.length - 1;
@@ -449,7 +471,7 @@ function createElements() {
 
 let classes = {
     className: 'open menu'
-}
+};
 
 function filterClassName() {
 
@@ -457,7 +479,7 @@ function filterClassName() {
 }
 
 let words = ["Есть", "жизнь", "на", "Марсе"];
-
+//done
 function forToMap() {
     let lengthAr = words.map(function (word) {
         return word.length
@@ -480,7 +502,7 @@ function getSums(arr) {
     });
     result.push(totalSum);
 }
-
+//done
 function getMnoj(arr) {
     let result = [];
     if (!arr.length) return result;
@@ -497,21 +519,23 @@ function getMnoj(arr) {
 }
 
 //arguments
+//done
 function argmnts() {
     return result = (arguments.length) ? 1 : 0;
 
 }
-
+//done
 function argumentsSum() {
     let result = 0;
-    for (let i = 0; i < arguments.length; i++) {
-        result += arguments[i];
+    for (let num of arguments) {
+        result += num;
         console.log(typeof result);
     }
     return result;
 }
 
 //DATE
+//done
 createDate = () => {
     let date = new Date(2012, 1, 20, 3, 12);
     return date;
@@ -520,6 +544,7 @@ createDate = () => {
 let customDate = new Date(2012, 0, 3);
 
 //мое решение
+//done
 getWeekDay = (date) => {
     let week_day = date.getDay();
     let result;
@@ -541,13 +566,13 @@ getWeekDay = (date) => {
     }
 
 };
-
+//done
 //учебник
 getWeekDay2 = (date) => {
     let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
     return days[date.getDay()];
 };
-
+//done
 //учебник
 getLocalDay = (date) => {
     let day = date.getDay();
@@ -558,7 +583,7 @@ getLocalDay = (date) => {
 
     return day;
 };
-
+//done
 getDateAgo = (date, days) => {
     let day = date.getDate();
     let newDate = new Date(date);
@@ -566,7 +591,7 @@ getDateAgo = (date, days) => {
     return newDate;
 
 };
-
+//done
 getLastDayOfMonth = (year, month) => {
     //мой вариант
     let date = new Date(year, month + 1);
@@ -575,13 +600,13 @@ getLastDayOfMonth = (year, month) => {
     date.setDate(date.getDate() - 1);
     return date.getDate();
 };
-
+//done
 getSecondsToday = () => {
     let now = new Date;
     let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     return Math.round((now - date) / 1000);
 };
-
+//done
 getSecondsToTomorrow = () => {
     let now = new Date;
     let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
@@ -589,7 +614,7 @@ getSecondsToTomorrow = () => {
 };
 let d = new Date(2014, 0, 30);
 
-
+//done
 formatDate = (d) => {
     const date = +d;
     const now = Date.now();
@@ -618,6 +643,7 @@ formatDate = (d) => {
         return full_date.slice(0, 3).join('.') + ' ' + full_date.slice(3).join(':');
     }
 };
+//done
 //учебник
 formatDate2 = (date) => {
     let dayOfMonth = date.getDate();
@@ -647,7 +673,7 @@ formatDate2 = (date) => {
         return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
     }
 };
-
+//done
 returnFormatDate = () => {
     console.log(formatDate(new Date(new Date - 1)));
     console.log(formatDate(new Date(new Date - 30 * 1000)));
