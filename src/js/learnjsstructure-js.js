@@ -28,7 +28,7 @@ readNumber = () => {
 
 //done
 random = (max) => {
-    let result = Math.round(Math.random() * (max-1));
+    let result = Math.round(Math.random() * (max - 1));
     return result;
 
 };
@@ -152,7 +152,7 @@ camelize = (str) => {
 };
 
 //done
-camelize2=(str)=>{
+camelize2 = (str) => {
 
     return str.split('-') // разбивает 'my-long-word' на массив ['my', 'long', 'word']
         .map(
@@ -252,6 +252,7 @@ getFullNames = (array = []) => {
     })
 };
 const anagram = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+
 //done
 function aclean(arr) {
     let obj = {};
@@ -296,6 +297,7 @@ function unique(arr = []) {
     }
     return newArr;
 }
+
 //done
 //норм способ
 function unique2(arr) {
@@ -327,7 +329,7 @@ shuffle = (arr = []) => {
     }
     return returnArray;
 };
-
+//done
 getAverageAge = (arr = []) => {
     let number = arr.map(person => person.age)
         .reduce((a, b) => a + b);
@@ -347,6 +349,7 @@ function objectCreate() {
     console.log(user);
 
 }
+
 //done
 function isEmpty(obj) {
     console.log(obj);
@@ -382,6 +385,7 @@ let salaries = {
     "Petya": 300,
     "Dasha": 250
 };
+
 //done
 function whoIsRich(salaries) {
 
@@ -395,6 +399,7 @@ function whoIsRich(salaries) {
     }
     return maxName;
 }
+
 //done
 function multiplyNumeric(menu) {
     for (let key in menu) {
@@ -415,12 +420,118 @@ let menu = {
     title: "My menu"
 };
 
+let calculator = {
+    read() {
+        this.a = +prompt('первое число', '0');
+        this.b = +prompt('второе число', '0');
+    },
+    sum() {
+        return this.a + this.b
+    },
+    mul() {
+        return this.a * this.b
+    }
+};
+
+//Методы объекта, "this"
+let calculate = () => {
+    calculator.read();
+    console.log(calculator.sum());
+    console.log(calculator.mul());
+};
+
+//done
+let ladder = {
+    step: 0,
+    up() {
+        this.step++;
+    },
+    down() {
+        this.step--;
+    },
+    showStep: function () { // показывает текущую ступеньку
+        alert(this.step);
+    }
+};
+//done
+let goLedder = () => {
+    ladder.up();
+    ladder.up();
+    ladder.down();
+    ladder.showStep(); // 1
+};
+
+let ladder2 = {
+    step: 0,
+    up() {
+        this.step++;
+        return this;
+    },
+    down() {
+        this.step--;
+        return this;
+    },
+    showStep: function () { // показывает текущую ступеньку
+        alert(this.step);
+        return this;
+    }
+};
+//done
+let goLedder2 = () => {
+    ladder2.up()
+        .up()
+        .down()
+        .showStep();
+};
+
+
+//Создание объекта через конструктор new
+//done
+function Calculator() {
+    this.read = function () {
+        this.num1 = +prompt('num 1', '');
+        this.num2 = +prompt('num 2', '');
+    };
+    this.sum = function () {
+        return this.num1 + this.num2
+    };
+    this.mul = function () {
+        return this.num1 * this.num2
+    }
+}
+
+calcCreate = () => {
+    let calc = new Calculator();
+    calc.read();
+    console.log('sum=', calc.sum());
+    console.log('mul=', calc.mul());
+};
+
+//done
+function Accumulator(startingValue) {
+    this.val = +startingValue;
+    this.read = function () {
+        this.val += +prompt('mum', '');
+    }
+
+}
+
+showAccum = () => {
+    let acum = new Accumulator('9');
+    acum.read();
+    acum.read();
+    return acum.val;
+};
+
+
 let goods = ['apple', 'orange', 'banana'];
+
 //done
 function getLastFruit() {
     alert(goods);
     alert(goods[goods.length - 1]);
 }
+
 //done
 function pushToArray() {
     goods[goods.length] = 'melon';
@@ -428,6 +539,7 @@ function pushToArray() {
 }
 
 let styles = ['Джаз', 'Блюз'];
+
 //done
 function unshiftArray() {
     alert(styles);
@@ -443,6 +555,7 @@ function unshiftArray() {
 }
 
 let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+
 //done
 function alertRandom() {
     let min = 0;
@@ -453,32 +566,8 @@ function alertRandom() {
 
 }
 
-function createElements() {
-    let arr = [];
-    let element = prompt('Элемент', '');
-    if (element) {
-
-        arr.push(element);
-        element = prompt('Элемент', '')
-    } else return arr;
-//     arr.push( prompt('Элемент', ''));
-//	arr.push( prompt('Элемент', ''));
-//    arr.push( prompt('Элемент', ''));
-    console.log(arr);
-
-
-}
-
-let classes = {
-    className: 'open menu'
-};
-
-function filterClassName() {
-
-
-}
-
 let words = ["Есть", "жизнь", "на", "Марсе"];
+
 //done
 function forToMap() {
     let lengthAr = words.map(function (word) {
@@ -489,33 +578,28 @@ function forToMap() {
 
 let nmbs = [1, 2, 3, 4, 5];
 
+//done
 function getSums(arr) {
     let result = [];
     if (!arr.length) return result;
 
     let totalSum = arr.reduce(function (prev, curr) {
         result.push(prev);// заносит prev - результат суммы
-        console.log(prev + ' prev');
-        console.log(curr + ' curr');
         return prev + curr // это значение возвращает prev
 
     });
     result.push(totalSum);
+    return result;
 }
+
 //done
 function getMnoj(arr) {
-    let result = [];
-    if (!arr.length) return result;
+    if (!arr.length) return [];
     let totalSum = arr.map(function (item, i) {
-        if (arr[i - 1] > 0) {
-            return item * arr[i - 1]
-
-        }
-
-
+        return item * arr[i + 1]
     });
-    result.push(totalSum);
-    console.log(result)
+    totalSum.pop();
+    return totalSum;
 }
 
 //arguments
@@ -524,6 +608,7 @@ function argmnts() {
     return result = (arguments.length) ? 1 : 0;
 
 }
+
 //done
 function argumentsSum() {
     let result = 0;

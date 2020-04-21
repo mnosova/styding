@@ -188,7 +188,7 @@
 		   alert( calculator.sum() );
 		   alert( calculator.mul() );</p>
 		<p>
-			<!--<button onclick="">запуск</button>-->
+			<button onclick="console.log(calculate())">запуск</button>
 		</p>
 		<p>Это ladder (лестница) – объект, который позволяет подниматься вверх и спускаться:
 		   let ladder = {
@@ -212,7 +212,8 @@
 		   ladder.up().up().down().showStep(); // 1
 		   Такой подход широко используется в библиотеках JavaScript.</p>
 		<p>
-			<!--<button onclick="">запуск</button>-->
+			<button onclick="console.log(goLedder())">запуск</button>
+			<button onclick="console.log(goLedder2())">запуск</button>
 		</p>
 		<p><b>Конструкторы, создание объектов через "new"</b></p>
 		<p>
@@ -227,7 +228,7 @@
 			alert( "Mul=" + calculator.mul() );
 		</p>
 		<p>
-			<!--<button onclick="">запуск</button>-->
+			<button onclick="console.log(calcCreate())">запуск</button>
 		</p>
 		<p>
 			Напишите функцию-конструктор Accumulator(startingValue).
@@ -242,7 +243,7 @@
 			alert(accumulator.value); // выведет сумму этих значений
 		</p>
 		<p>
-			<!--<button onclick="">запуск</button>-->
+			<button onclick="console.log(showAccum())">запуск</button>
 		</p>
 		<p><b>Массивы с числовыми индексами</b></p>
 		<p>
@@ -568,9 +569,11 @@
 			Еще пример: getSums([-2,-1,0,1]) = [-2,-3,-3,-2].
 			Функция не должна модифицировать входной массив.
 			В решении используйте метод arr.reduce.
+			getMnoj массив с результатом умножения соседних эдементов
 		</p>
 		<p>
-			<button onclick="getMnoj(nmbs)">запуск</button>
+			<button onclick="console.log(getMnoj(nmbs))">запуск</button>
+			<button onclick="console.log(getSums(nmbs))">запуск2</button>
 		</p>
 		<p><b>Псевдомассив аргументов "arguments"</b></p>
 		<p>
@@ -646,6 +649,13 @@
 			alert( formatDate(new Date(new Date - 86400 * 1000)) ); // вчерашняя дата в формате "дд.мм.гг чч:мм"
 		</p>
 		<button onclick="console.log(returnFormatDate())">запуск</button>
+		<p><b>Map и Set</b></p>
+
+
+		<p><b>WeakMap и WeakSet</b></p>
+		<p><b> Object.keys, values, entries </b></p>
+		<p><b> Деструктурирующее присваивание </b></p>
+		<p><b> Формат JSON, метод toJSON </b></p>
 	</div>
 
 </div>
