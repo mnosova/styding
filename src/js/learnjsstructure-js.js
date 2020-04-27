@@ -766,3 +766,147 @@ returnFormatDate = () => {
     console.log(formatDate(new Date(new Date - 79200 * 1000)));
     console.log(formatDate(new Date(new Date - 86400 * 1000)));
 };
+//map set
+
+let set = ["Hare", "Krishna", "Hare", "Krishna", "Krishna", "Krishna", "Hare", "Hare", ":-O"];
+//done
+uniqSet = (arr) => {
+    return Array.from(new Set(arr));
+
+};
+
+let cleanarr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+//done
+cleanArray = (arr) => {
+    return Array.from(new Set(arr.map(word => word.toLowerCase().split('').sort().join(''))));
+
+};
+
+//учебник
+function arrclean(arr) {
+    let map = new Map();
+
+    for (let word of arr) {
+        let sorted = word.toLowerCase().split("").sort().join("");
+        map.set(sorted, word);
+    }
+    return Array.from(map.values());
+}
+
+//done
+pushMore = () => {
+    let map = new Map();
+    map.set("name", "John");
+    let keys = Array.from(map.keys());
+    keys.push("more");
+    return keys;
+};
+
+
+//WeakMap WeakSet
+//done
+delMessages = () => {
+    let messages = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+    ];
+    let readMesseges = new WeakSet();
+
+    readMesseges.add(messages[0]);
+    readMesseges.add(messages[1]);
+    if (readMesseges.has(messages[1])) readMesseges.delete(messages[1]);
+
+};
+//done
+saveDateMessages = () => {
+    let messages = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+    ];
+
+    let readMap = new WeakMap();
+
+    readMap.set(messages[0], new Date(2017, 1, 1));
+    return readMap;
+};
+// Object.keys, values, entries
+//done
+getSumSalaries = (obj) => {
+    let result = 0;
+    for (let num of  Object.values(obj)) {
+        result += +num;
+    }
+    return result;
+};
+getSumSalaries2 = (obj) => {
+    return Object.values(obj).reduce((a, b) => a + b, 0) // 650
+};
+
+let user = {
+    name: 'John',
+    age: 30
+};
+//done
+countObjProps = (obj) => {
+    return Object.entries(obj).length;
+};
+
+//Деструктурирующее присваивание
+destructObj = ({name, age: years, isAdmin = false}) => {
+    console.log('name', name);
+    console.log('age as yaers', years);
+    console.log('isAdmin', isAdmin);
+
+};
+//done
+getRichGye = (sal) => {
+    let arr = Object.entries(sal);
+    //let [name] =  arr.sort((a,b)=>a-b);
+
+    let newArr = arr.sort((a, b) => a[1] - b[1]);
+    console.log(arr.sort((a, b) => {
+        if (a[0] - b[0]) {
+            return a[0]
+        }
+    }));
+    console.log(newArr);
+    return name;
+
+};
+
+//Формат JSON, метод toJSON
+//done
+json = () => {
+    let user = {
+        name: "Василий Иванович",
+        age: 35
+    };
+    console.log(user);
+    let j = JSON.stringify(user);
+    console.log('json string', j);
+    let c = JSON.parse(j);
+    console.log('json parse', c);
+    return JSON.parse(JSON.stringify(user));
+};
+
+let room = {
+    number: 23
+};
+let meetup = {
+    title: "Совещание",
+    occupiedBy: [{name: "Иванов"}, {name: "Петров"}],
+    place: room
+};
+room.occupiedBy = meetup;
+meetup.self = meetup;
+//done
+circleLink = (obj = {}) => {
+    return JSON.stringify(obj, (key, value) => {
+        //Здесь нам также нужно проверить key =="", чтобы исключить первый вызов, где значение value равно meetup.
+        return (key !== "" && value === obj) ? undefined : value;
+    })
+
+};
