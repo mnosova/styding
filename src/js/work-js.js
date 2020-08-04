@@ -808,3 +808,125 @@ function getRandomItems(array = [], qty = 1) {
     return returnArray;
 }
 
+const testPrices = ['200', '600', '800', '1300' , '300'];
+const shav =2;
+const mycash = 1600;
+
+howMuchItemsCanIBuy = (prices = [], cache=0, n=0)=> {
+    let result = 0;
+    if(!prices.length && !Array.isArray(prices))return result;
+    if(!cache && typeof +cache !== 'number' )return result;
+    if(!n && typeof +n !== 'number' )return result;
+    const resultArr = prices.map(num => +num).filter( num => num*n <= cache );
+    if(!resultArr && !resultArr.length) return result;
+    if(resultArr.reduce((a,b) => a+b) === cache) return resultArr.length;
+    let newResultArr = [];
+    let max = 0;
+    for(let i = 0; i<= resultArr.length-1; i++){
+         for(let n = i; n <= resultArr.length-1; n++){
+             if(resultArr[n+1]) {
+                 if ( resultArr[i] + resultArr[n+1] > max &&resultArr[i] + resultArr[n+1]<=cache){
+                     max = resultArr[i] + resultArr[n+1];
+                     newResultArr = [ resultArr[i], resultArr[n+1]]
+                 }
+             }
+        }
+    }
+    if(newResultArr && newResultArr.length) return newResultArr.length;
+
+};
+
+const stringArray = ['JavaScript' , 'python', 'Php', 'Ruby' ];
+getStringFromArray = (arr=[])=> {
+    if(!Array.isArray(arr) && !arr.length) return;
+   const newArr = arr.map((word, index)=>{
+       if(index === arr.length-1) return `и ${word}`;
+       else if((index === arr.length-2) ) return word;
+           else return  `${word},`
+   });
+return newArr.join(' ');
+};
+
+
+const dataIn = {
+    'a.b.c.m': 'm data',
+    'a.b.x': 'x data',
+    'd.e': 'e data',
+    'd.d': 'd data',
+    'testKey': 'test key data',
+};
+
+const dataOut = {
+    'a': {
+        'b': {
+            'c': {
+                'm': 'm data',
+            },
+            'x': 'x data',
+        }
+    },
+    'd': {
+        'e': 'e data',
+        'd': 'd data',
+    },
+    'testKey': 'test key data',
+};
+
+const f = (data={}) => {
+
+    let result = {};
+    Object.entries(data).map(arr=>{
+        let newArr = [];
+        newArr.push(arr[0].split('.'));
+        newArr.push(arr[1]);
+        return makeObjFromArray(newArr);
+    });
+
+    function makeObjFromArray(arr=[]) {
+        let keys = arr[0].slice(0, arr[0].length);
+        keys.reduce((emptyObj, key, index) =>{
+            if(index === keys.length-1) return  emptyObj[key] = arr[1];
+            else return  emptyObj[key] = { ...emptyObj[key]};
+        }, result);
+    }
+
+    console.log(result);
+    return result;
+};
+
+
+const f2 = data => {
+    //target это первое значение для функции reduce, подобно 0 или 1, старт, начало
+    const target = {};
+    const appendKey = (keys, value) => {
+        //keys ['a','b','c','m']
+        //value m data'
+        keys.reduce((EmptyObj, key, index) => {
+            //EmptyObj[а] = если индекс равен последнему эл массива, то  возвращаем посл строчку value
+            //если нет, то заносим в объект пред значение reduce и  EmptyObj[key], если оно есть
+            EmptyObj[key] = index === keys.length - 1 ? value : { ...EmptyObj[key] };
+            return EmptyObj[key];
+            //console.log('acc[key]', acc[key]);
+            //target это первое значение для функции reduce
+        }, target);
+    };
+
+    //берем ключи в виде массива и перебираем
+    // '[a.b.c.m'], ['a.b.x'], ['d.e'], ['d.d'], ['testKey']
+
+    Object.keys(data).map(dataKey =>
+        //примеяем к каждому функцию которая вернет объект
+        //dataKey.split('.') === ['a','b','c','m']
+        //data[dataKey] === 'm data'
+        appendKey(dataKey.split('.'), data[dataKey])
+    );
+    return target;
+};
+
+
+
+
+
+
+// Should display "true"
+
