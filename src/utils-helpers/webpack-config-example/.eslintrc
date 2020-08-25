@@ -6,6 +6,12 @@
     "node": true
   },
   "extends": "eslint:recommended",
+//  "parserOptions": {
+//    "ecmaFeatures": {
+//      "jsx": true
+//    },
+//    "sourceType": "module"
+//  },
   "plugins": ["react", "babel"],
   "parser": "babel-eslint",
   "rules": {
@@ -39,6 +45,8 @@
     }]
   },
   "globals": {
+//    "isDevelopment": true,
+//    "timestamp": true,
     "ymaps": true,
     "google": true,
     "FB": true,

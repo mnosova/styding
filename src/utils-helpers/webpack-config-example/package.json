@@ -5,6 +5,7 @@
   "main": "index.html",
   "author": "",
   "license": "MIT",
+  "repository" : "",
   "config": {
     "server": "--config webpack/server.config.babel.js",
     "client": "--config webpack/client.config.babel.js"
@@ -18,7 +19,14 @@
     "qa": "NODE_ENV=production webpack $npm_package_config_client && NODE_ENV=production BABEL_ENV=server webpack $npm_package_config_server",
     "build": "webpack $npm_package_config_client && BABEL_ENV=server webpack $npm_package_config_server",
     "crumbs:client": "codecrumbs -d frontend/ -e frontend/index.js",
-    "csv": "node ./node_modules/csv2i18next/csv2locales.js"
+    "csv": "node ./node_modules/csv2i18next/csv2locales.js",
+    "staging": "NODE_ENV=staging webpack $npm_package_config_client && NODE_ENV=staging BABEL_ENV=server webpack $npm_package_config_server",
+    "start": "webpack $npm_package_config_client && BABEL_ENV=server webpack $npm_package_config_server && node $npm_package_main",
+    "stats:client": "webpack --json > .stats/client.json $npm_package_config_client",
+    "stats:server": "webpack --json > .stats/server.json $npm_package_config_server",
+    "crumbs:server": "codecrumbs -d src/ -e src/server/index.jsx",
+    "docgen": "react-docgen ./src/shared/components/ --pretty --out ./components.doc.json",
+    "precommit": "yarn lint-staged && yarn jest"
   },
   "dependencies": {
   },
@@ -37,6 +45,17 @@
     "testPathIgnorePatterns": [
       "<rootDir>/public",
       "<rootDir>/tests"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|sass)$": "identity-obj-proxy"
+    },
+    "lint-staged": {
+      "linters": {
+        "*.{js,jsx}": [
+          "eslint"
+        ]
+      }
+    }
   }
 }

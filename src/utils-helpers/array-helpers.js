@@ -287,6 +287,18 @@ function myParser(data) {
   return target;
 }
 
+//   const arr = pipe(
+//             items => items.map(({ product_id }) => products.find(({ id }) => product_id === id)),
+//             products => products.filter(({ is_delivery }) => !is_delivery)
+//           )(items);
+const pipe = (...functions) => (value) => {
+  return functions
+    .reduce((currentValue, currentFunction) => {
+      return currentFunction(currentValue);
+    }, value);
+};
+
+
 export {
   getRandomItems,
   valuesToArray,

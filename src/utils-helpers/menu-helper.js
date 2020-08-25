@@ -12,6 +12,12 @@ const getByTextId = (textId) => {
   }
   return null;
 };
+
+const getMenuId = ({ menu, menu_id }) => {
+  let { id: menuId } = menu.find(({ text_id = '' }) => text_id === menu_id) || {};
+  return menuId;
+};
+
 const getById = (id) => {
   const menu = globalStore.get('menu', []);
   for (let i = 0; i < menu.length; i++) {

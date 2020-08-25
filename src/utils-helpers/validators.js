@@ -94,3 +94,17 @@ const Validator = {
 };
 Validator.allrules = allrules;
 export default Validator;
+//===============
+
+function phoneValidate(input, num = 10) {
+  if(input.value && input.value.replace(/\D+/g,'').length < num || !input.value) {
+    return true;
+  }
+}
+
+function isPhoneValid(phoneNumber) {
+  if(!phoneNumber) return false;
+  const regExpression = '\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}';
+  const phoneRegexp = new RegExp(regExpression, 'g');
+  return phoneNumber.search(phoneRegexp) >= 0;
+}

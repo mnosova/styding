@@ -28,6 +28,34 @@ function createAddress(order) {
   _order.comment = order.comment ? order.comment: '';
   return _order;
 }
+function getAddress(form) {
+  if((!form.street && !form.cityName) || !form.house) return '';
+  return `${form.full_address || ''}${form.street || ''}, ${form.house || ''} ${form.building || ''}`.trim();
+}
+
+
+function getInvalidFields({ target: { name } }, { invalidFields, isInvalid }) {
+  if(name === 'password_again' || name === 'password' || name === 'new_password' || name === 'new_password_again') {
+    invalidFields.password_again     = false;
+    invalidFields.password           = false;
+    invalidFields.new_password       = false;
+    invalidFields.new_password_again = false;
+  }
+  if(name === 'address') {
+    invalidFields.is_valid_address = false;
+  }
+  return { ...invalidFields, [name]: isInvalid };
+}
+
+function getFormFields ({ target }, fields) {
+  let form = { };
+  fields.forEach(name => {
+    if(target[name] && name === target[name].name) {
+      form[name] = target[name].value;
+    }
+  });
+  return form;
+}
 
 export {
   createAddress

@@ -39,6 +39,10 @@ const objectHelper = {
 
 export default objectHelper;
 
+
+//возвращает объект только с выбранными ключами (fields) в форме массива строк
+//let obj = new ObjectHelper({ 'key': 'value','isSome': true });
+//console.log('filter', obj.filter(['isSome'])); => { 'isSome': true }
 class ObjectHelper {
   constructor (obj) {
     this.obj = obj;
