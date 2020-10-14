@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title>Site Name / Learn JavaScript.Структура</title><!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE = edge"><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="../js/async.js"></script>
+  </head>
+  <style>
+    body,html {
+      margin: 0;
+      padding: 0;
+    }
+    p{
+      margin: 5px 0 10px;
+    }
+  </style>
+  <body>
+    <div class="content">
+      <header>
+        <ul>
+          <li><a href="blockly.html">Blockly</a></li>
+          <li><a href="learnjsbasic.html">Learn JavaScript.Основы</a></li>
+          <li><a href="learnjsstructure.html">Learn JavaScript.Структура</a></li>
+          <li><a href="#">Асинхронные запросы</a></li>
+          <li><a href="proto.html">Learn JavaScript.Функции.Прототипы,классы,наследование</a></li>
+        </ul>
+      </header>
+      <div class="page page__async">
+        <p><b>Асинхронные запросы</b></p>
+
+        <p>GET fetch запрос пользователя на данные</p>
+        <p>
+          <button onclick="getUser()">запуск</button>
+        </p>
+        <p>POST fetch запрос на занесение данных</p>
+        <p>
+          <button onclick="getUser2()">запуск запуск</button>
+        </p>
+        <p>GET axios запрос пользователя на данные</p>
+        <p>
+          <button onclick="getAxios()">запуск</button>
+        </p>
+        <p>POST axios запрос пользователя на данные</p>
+        <p>
+          <button onclick="postAxios()">запуск</button>
+        </p>
+        <p>GET async fetch запрос пользователя на данные</p>
+        <p>
+          <button onclick="fetchAcyncResult()">запуск</button>
+        </p>
+        <p>GET fetch запрос погоды
+          <p>
+            <button onclick="getWeather()">запуск</button>
+          </p>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

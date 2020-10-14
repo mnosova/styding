@@ -619,6 +619,10 @@ function argumentsSum() {
     return result;
 }
 
+let argumentsSum2 =(array =[])=>{
+    return array.reduce((a,b)=> +a + +b)
+};
+
 //DATE
 //done
 createDate = () => {
